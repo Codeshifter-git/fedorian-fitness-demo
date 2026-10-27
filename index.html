@@ -117,6 +117,9 @@ main{min-width:0;padding:28px 22px 60px}
 .tabbar::-webkit-scrollbar{display:none}
 .plan-week-scroll{scrollbar-width:none}
 .plan-week-scroll::-webkit-scrollbar{display:none}
+.plan-week-scroll .todo-row{gap:8px}
+.plan-week-scroll .check{width:32px;height:32px;flex:0 0 32px}
+.plan-week-scroll .icon-btn{width:32px;height:32px;font-size:16px}
 .tab-btn{
   display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
   background:transparent;border:1.5px solid transparent;border-radius:8px;
@@ -212,6 +215,7 @@ input[type="file"]{display:none}
 .todo-row{display:flex;align-items:center;gap:12px;padding:6px 0}
 .todo-text{flex:1;font-size:15px}
 .todo-row.done .todo-text{color:#9AA39E;text-decoration:line-through}
+.todo-row.done input{color:#9AA39E;text-decoration:line-through}
 .add-row{display:flex;gap:10px;margin-top:12px}
 .add-row .text-input{flex:1}
 .empty-note{color:#9AA39E;font-size:14px;padding:8px 0}
@@ -542,6 +546,9 @@ main{min-width:0;padding:28px 22px 60px}
 .tabbar::-webkit-scrollbar{display:none}
 .plan-week-scroll{scrollbar-width:none}
 .plan-week-scroll::-webkit-scrollbar{display:none}
+.plan-week-scroll .todo-row{gap:8px}
+.plan-week-scroll .check{width:32px;height:32px;flex:0 0 32px}
+.plan-week-scroll .icon-btn{width:32px;height:32px;font-size:16px}
 .tab-btn{
   display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
   background:transparent;border:1.5px solid transparent;border-radius:8px;
@@ -637,6 +644,7 @@ input[type="file"]{display:none}
 .todo-row{display:flex;align-items:center;gap:12px;padding:6px 0}
 .todo-text{flex:1;font-size:15px}
 .todo-row.done .todo-text{color:#9AA39E;text-decoration:line-through}
+.todo-row.done input{color:#9AA39E;text-decoration:line-through}
 .add-row{display:flex;gap:10px;margin-top:12px}
 .add-row .text-input{flex:1}
 .empty-note{color:#9AA39E;font-size:14px;padding:8px 0}
@@ -1365,7 +1373,7 @@ function renderWeekPlan(){
         <button class="btn ghost" data-action="plan-next-week">Week ›</button>
       </div>
     </div>
-    <div class="plan-week-scroll" style="display:grid;grid-template-columns:repeat(7,minmax(170px,1fr));gap:12px;overflow-x:auto;padding-bottom:4px">
+    <div class="plan-week-scroll" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding-bottom:4px">
       ${days.map(iso => {
         if (iso < RANGE_MIN || iso > RANGE_MAX) {
           return `<div class="card" style="opacity:.55"><h3>${DOW_SHORT[parseISO(iso).getDay()]} ${parseISO(iso).getDate()}</h3><p class="empty-note">Outside the demo month.</p></div>`;
